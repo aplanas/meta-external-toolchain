@@ -1,7 +1,7 @@
 # Configuration to use external Sourcery G++ toolchain
 EXTERNAL_TOOLCHAIN ??= "UNKNOWN"
 EXTERNAL_TARGET_SYS ??= "${TARGET_ARCH}-${TARGET_OS}"
-EXTERNAL_TOOLCHAIN_BIN ??= "${EXTERNAL_TOOLCHAIN}/bin"
+EXTERNAL_TOOLCHAIN_BIN ??= "${EXTERNAL_TOOLCHAIN}/usr/bin"
 EXTERNAL_ENABLED = "1"
 
 # External toolchain features.
