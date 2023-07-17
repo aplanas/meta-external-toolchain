@@ -53,7 +53,7 @@ python add_ml_symlink:tcmode-external () {
         libroot = pathlib.Path(libroot)
         for child in get_links(libroot):
             link_dest = child.resolve(strict=True)
-            for other_child in get_links(link_dest):
+            for other_child in get_links(link_dest.parents[0]):
                 if other_child.resolve() == libroot.resolve():
                     other = other_child.parent.resolve() / other_child.name
                     relpath = other.relative_to(sysroot)
@@ -61,7 +61,7 @@ python add_ml_symlink:tcmode-external () {
                     d.appendVar('FILES:${PN}-dev', ' /' + str(relpath))
 }
 add_ml_symlink[eventmask] = "bb.event.RecipePreFinalise"
-addhandler add_ml_symlink
+# addhandler add_ml_symlink
 
 do_install_extra () {
     if [ -e "${D}${libdir}/${EXTERNAL_TARGET_SYS}" ] && [ -z "${MLPREFIX}" ]; then
